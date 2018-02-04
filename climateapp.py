@@ -53,17 +53,7 @@ def tobs():
 @app.route("/api/v1.0/<start>")
 def tempstart(start):
     start_date = str(start)
-    
-    from sqlalchemy import create_engine
-    engine = create_engine("sqlite:///hawaii.sqlite")
 
-    from sqlalchemy.ext.automap import automap_base
-    Base = automap_base()
-    Base.prepare(engine, reflect=True)
-
-    Measurement = Base.classes.measurements
-
-    from sqlalchemy.orm import Session
     session = Session(engine)
 
     from sqlalchemy import func
@@ -86,16 +76,6 @@ def tempstartend(start, end):
     start_date = str(start)
     end_date = str(end)
 
-    from sqlalchemy import create_engine
-    engine = create_engine("sqlite:///hawaii.sqlite")
-
-    from sqlalchemy.ext.automap import automap_base
-    Base = automap_base()
-    Base.prepare(engine, reflect=True)
-
-    Measurement = Base.classes.measurements
-
-    from sqlalchemy.orm import Session
     session = Session(engine)
 
     from sqlalchemy import func
